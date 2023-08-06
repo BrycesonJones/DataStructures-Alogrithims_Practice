@@ -1,0 +1,34 @@
+"""ARRAYS AND HASHING"""
+
+def containsDuplicate(nums):
+
+hashset = set()
+for n in nums:
+    if n in hashset:
+        return True
+    hashset.add(n)
+return False
+
+
+def validanagram(s,t):
+    if len(s) != len(t):
+        return False
+    hashsetT = {}
+    hashsetS = {}
+    for i in range(len(s)):
+        ## character is s at index i. Everytime you see that character increase by 1. get method gets character
+        ## even if character does not exist yet. If you do not use get you will get a key value not found error
+        hashsetS[s[i]] = 1 + hashsetS.get(s[i],0)
+        hashsetT[s[i]] = 1 + hashsetT.get(t[i],0)
+    for c in hashsetS:
+        if hashsetS[c] != hashsetT.get(c,0):
+            return False
+    return True
+
+# Can also use counter or sorted method
+
+def validanagram(s,t):
+    return counter(s) == counter(t)
+
+def validanagram(s,t):
+    return sorted(s) == sorted(t)
