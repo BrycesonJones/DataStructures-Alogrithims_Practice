@@ -1,13 +1,12 @@
 """ARRAYS AND HASHING"""
 
 def containsDuplicate(nums):
-
-hashset = set()
-for n in nums:
-    if n in hashset:
-        return True
-    hashset.add(n)
-return False
+    hashset = set()
+    for n in nums:
+        if n in hashset:
+            return True
+        hashset.add(n)
+    return False
 
 
 def validanagram(s,t):
@@ -32,3 +31,13 @@ def validanagram(s,t):
 
 def validanagram(s,t):
     return sorted(s) == sorted(t)
+
+
+def twosum(nums):
+    hashset = {}
+    for i, n in enumerate(nums):
+        diff = target - n
+        if diff in hashset:
+            return [hashset[diff],i]
+        hashset[n] = i
+    return
